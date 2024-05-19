@@ -40,14 +40,14 @@ class EventHandler implements Listener
             $banned_data = $temporarily_data->getData($player->getName());
 
             $params = [
-                "username" => $banned_data["username"],
-                "reason" => $banned_data["reason"],
-                "sender" => $banned_data["sender"],
-                "date" => $banned_data["date"],
-                "duration" => TimeFormatter::getTimeLeft($banned_data["duration"])
+                "{username}" => $banned_data["username"],
+                "{reason}" => $banned_data["reason"],
+                "{sender}" => $banned_data["sender"],
+                "{date}" => $banned_data["date"],
+                "{duration}" => TimeFormatter::getTimeLeft($banned_data["duration"])
             ];
 
-            if ($params["duration"] <= 0) {
+            if ($params["{duration}"] <= 0) {
                 $temporarily_data->unsetData($player->getName());
                 return;
             }

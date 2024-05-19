@@ -2,7 +2,8 @@
 
 namespace xoapp\advancedban\time;
 
-class TimeFormatter {
+class TimeFormatter
+{
 
     const VALID_FORMATS = ["minutes", "hours", "seconds", "days"];
 
@@ -30,7 +31,7 @@ class TimeFormatter {
         return $time;
     }
 
-    public static function stringToInt(string $timeFormat): string
+    public static function stringToInt(string $timeFormat): int
     {
         $format = str_split($timeFormat);
         $characters = "";
@@ -39,12 +40,12 @@ class TimeFormatter {
                 $characters .= $format[$i];
             }
         }
-        return $characters;
+        return intval($characters);
     }
 
     public static function getFormatTime(int $time, string $timeFormat): ?int
     {
-        return match(self::intToString($timeFormat)) {
+        return match (self::intToString($timeFormat)) {
             "minutes" => time() + ($time * 60),
             "hours" => time() + ($time * 3600),
             "days" => time() + ($time * 86400),
@@ -57,27 +58,19 @@ class TimeFormatter {
     {
         $remaining = $time - time();
         $s = $remaining % 60;
-        $m = floor(($remaining % 3600) / 60);
-        $h = floor(($remaining % 86400) / 3600);
-        $days = floor($remaining / 86400);
+        $m = null;
+        $h = null;
+        $days = null;
 
-        $format = "";
-        
-        if ($days > 0) {
-            $format .= "$days days ";
+        if ($remaining >= 60) {
+            $m = floor(($remaining % 3600) / 60);
+            if ($remaining >= 3600) {
+                $h = floor(($remaining % 86400) / 3600);
+                if ($remaining >= 3600 * 24) {
+                    $days = floor($remaining / 86400);
+                }
+            }
         }
-        
-        if ($h > 0 || $days > 0) { 
-            $format .= "$h hours ";
-        }
-        
-        if ($m > 0 || $h > 0 || $days > 0) {
-            $format .= "$m minutes ";
-        }
-        
-        $format .= "$s seconds";
-
-        return $format;
+        return ($m !== null ? ($h !== null ? ($days !== null ? "$days days " : "") . "$h hours " : "") . "$m minutes " : "") . "$s seconds";
     }
-
 }

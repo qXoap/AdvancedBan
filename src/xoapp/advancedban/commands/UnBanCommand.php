@@ -36,7 +36,7 @@ class UnBanCommand extends Command
             $permanently_data->unsetData($args[0]);
 
             $player->sendMessage(
-                MessageUtils::getMessage("permanently", "player_unbanned", ["username" => $args[0]])
+                MessageUtils::getMessage("permanently", "player_unbanned", ["{username}" => $args[0]])
             );
             return;
         }
@@ -46,7 +46,7 @@ class UnBanCommand extends Command
             $temporarily_data->unsetData($args[0]);
 
             $player->sendMessage(
-                MessageUtils::getMessage("temporarily", "player_unbanned", ["username" => $args[0]])
+                MessageUtils::getMessage("temporarily", "player_unbanned", ["{username}" => $args[0]])
             );
             return;
         }

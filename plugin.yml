@@ -3,3 +3,15 @@ main: xoapp\advancedban\Loader
 api: 5.0.0
 version: 1.0.0
 author: Xoapp
+
+permissions:
+  ban.command:
+    default: op
+  tempban.command:
+    default: op
+  banlist.command:
+    default: op
+  baninfo.command:
+    default: op
+  unban.command:
+    default: op

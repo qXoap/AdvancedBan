@@ -53,14 +53,22 @@ class TempBanCommand extends Command
 
         $string_time = TimeFormatter::intToString($args[2]);
         $int_time = TimeFormatter::stringToInt($args[2]);
-        $format_time = TimeFormatter::getFormatTime($int_time, $args[2]);
 
-        if (is_null($string_time)) {
+        if (!in_array($string_time, TimeFormatter::VALID_FORMATS)) {
             $player->sendMessage(
                 MessageUtils::getMessage("error", "invalid_time")
             );
             return;
         }
+
+        if (!is_numeric($int_time) || !is_numeric($args[2][0])) {
+            $player->sendMessage(
+                MessageUtils::getMessage("error", "invalid_time")
+            );
+            return;
+        }
+
+        $format_time = TimeFormatter::getFormatTime($int_time, $args[2]);
 
         if (!$i_player instanceof Player) {
 
@@ -73,10 +81,10 @@ class TempBanCommand extends Command
             ];
 
             $params = [
-                "username" => $args[0],
-                "reason" => $args[1],
-                "time" => $format_time,
-                "sender" => $player->getName()
+                "{username}" => $args[0],
+                "{reason}" => $args[1],
+                "{duration}" => TimeFormatter::getTimeLeft($format_time),
+                "{sender}" => $player->getName()
             ];
 
             $data->setData($args[0], $contents);
@@ -100,13 +108,13 @@ class TempBanCommand extends Command
         ];
 
         $params = [
-            "username" => $i_player->getName(),
-            "reason" => $args[1],
-            "duration" => $format_time,
-            "sender" => $player->getName()
+            "{username}" => $i_player->getName(),
+            "{reason}" => $args[1],
+            "{duration}" => TimeFormatter::getTimeLeft($format_time),
+            "{sender}" => $player->getName()
         ];
 
-        $data->setData($args[0], $contents);
+        $data->setData($i_player->getName(), $contents);
 
         $player->sendMessage(
             MessageUtils::getMessage("temporarily", "player_banned", $params)

@@ -54,13 +54,14 @@ class BanCommand extends Command
             ];
 
             $params = [
-                "username" => $args[0],
-                "duration" => "Permanently",
-                "reason" => $args[1],
-                "sender" => $player->getName(),
+                "{username}" => $args[0],
+                "{duration}" => "Permanently",
+                "{reason}" => $args[1],
+                "{sender}" => $player->getName(),
             ];
 
             $data->setData($args[0], $contents);
+
             $player->sendMessage(
                 MessageUtils::getMessage("permanently", "player_banned", $params)
             );
@@ -86,13 +87,14 @@ class BanCommand extends Command
         ];
 
         $params = [
-            "username" => $i_player->getName(),
-            "duration" => "Permanently",
-            "reason" => $args[1],
-            "sender" => $player->getName(),
+            "{username}" => $i_player->getName(),
+            "{duration}" => "Permanently",
+            "{reason}" => $args[1],
+            "{sender}" => $player->getName(),
         ];
 
         $data->setData($i_player->getName(), $contents);
+
         $player->sendMessage(
             MessageUtils::getMessage("permanently", "player_banned", $params)
         );

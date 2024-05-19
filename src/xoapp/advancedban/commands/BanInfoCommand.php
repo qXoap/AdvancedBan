@@ -36,11 +36,11 @@ class BanInfoCommand extends Command
             $banned_data = $permanently_data->getData($args[0]);
 
             $params = [
-                "username" => $args[0],
-                "duration" => "Permanently",
-                "reason" => $banned_data["reason"],
-                "sender" => $banned_data["sender"],
-                "date" => $banned_data["date"]
+                "{username}" => $args[0],
+                "{duration}" => "Permanently",
+                "{reason}" => $banned_data["reason"],
+                "{sender}" => $banned_data["sender"],
+                "{date}" => $banned_data["date"]
             ];
 
             $player->sendMessage(
@@ -53,11 +53,11 @@ class BanInfoCommand extends Command
             $banned_data = $temporarily_data->getData($args[0]);
 
             $params = [
-                "username" => $args[0],
-                "duration" => TimeFormatter::getTimeLeft($banned_data["duration"]),
-                "reason" => $banned_data["reason"],
-                "sender" => $banned_data["sender"],
-                "date" => $banned_data["date"]
+                "{username}" => $args[0],
+                "{duration}" => TimeFormatter::getTimeLeft($banned_data["duration"]),
+                "{reason}" => $banned_data["reason"],
+                "{sender}" => $banned_data["sender"],
+                "{date}" => $banned_data["date"]
             ];
 
             $player->sendMessage(
