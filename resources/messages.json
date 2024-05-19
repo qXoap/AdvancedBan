@@ -1,0 +1,23 @@
+{
+  "permanently": {
+    "player_already_banned": "§cPlayer is already banned",
+    "player_banned": "§aPlayer {username} has been banned",
+    "player_unbanned": "§aPlayer {username} has been unbanned",
+    "global_player_banned": "§aPlayer {username} has been banned for {reason}",
+    "player_info": " §fUsername: §7{username} \n §fReason: §7{reason} \n §fDuration: §7{duration} \n §fSender: §7{sender} \n §fDate: §7{date}",
+    "kick_message": "§l§eYOU HAVE BEEN BANNED \n §7Reason: (§f{reason} : {sender}§7) \n §7Duration: §f{duration}"
+  },
+  "temporarily": {
+    "player_already_banned": "§cPlayer is already banned",
+    "player_banned": "§aPlayer {username} has been banned",
+    "player_unbanned": "§aPlayer {username} has been unbanned",
+    "global_player_banned": "§aPlayer {username} has been banned for {reason} for {duration}",
+    "player_info": " §fUsername: §7{username} \n §fReason: §7{reason} \n §fDuration: §7{duration} \n §fSender: §7{sender} \n §fDate: §7{date}",
+    "kick_message": "§l§eYOU HAVE BEEN BANNED \n §7Reason: (§f{reason} : {sender}§7) \n §7Duration: §f{duration}"
+  },
+  "error": {
+    "invalid_time": "§cPlease set a valid time format",
+    "player_already_banned": "§cPlayer is already banned",
+    "player_not_found": "§cPlayer is not banned"
+  }
+}
