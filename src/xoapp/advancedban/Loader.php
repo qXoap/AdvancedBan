@@ -7,6 +7,7 @@ use pocketmine\utils\SingletonTrait;
 use xoapp\advancedban\commands\BanCommand;
 use xoapp\advancedban\commands\BanInfoCommand;
 use xoapp\advancedban\commands\BanListCommand;
+use xoapp\advancedban\commands\KickCommand;
 use xoapp\advancedban\commands\TempBanCommand;
 use xoapp\advancedban\commands\UnBanCommand;
 
@@ -21,7 +22,7 @@ class Loader extends PluginBase
     {
         self::setInstance($this);
 
-        $this->unregisterCommands(["ban", "banlist", "unban"]);
+        $this->unregisterCommands(["ban", "banlist", "unban", "kick"]);
 
         $this->saveResources(["config.yml", "messages.json"]);
 
@@ -48,7 +49,8 @@ class Loader extends PluginBase
             new BanListCommand(),
             new UnBanCommand(),
             new TempBanCommand(),
-            new BanInfoCommand()
+            new BanInfoCommand(),
+            new KickCommand()
         ]);
     }
 

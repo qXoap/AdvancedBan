@@ -15,6 +15,10 @@
     "player_info": " §fUsername: §7{username} \n §fReason: §7{reason} \n §fDuration: §7{duration} \n §fSender: §7{sender} \n §fDate: §7{date}",
     "kick_message": " §l§eYOU HAVE BEEN BANNED§r \n §7Reason: (§f{reason} : {sender}§7) \n §7Duration: §f{duration}"
   },
+  "global": {
+    "kick_message": " §l§eYOU HAVE BEEN KICKED§r \n §7Reason: (§f{reason} : {sender}§7)",
+    "player_not_found": "§cPlayer is not online"
+  },
   "error": {
     "invalid_time": "§cPlease set a valid time format",
     "player_already_banned": "§cPlayer is already banned",
