@@ -1,0 +1,8 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/qXoap/AdvancedBan
+build-by-default: true
+branches:
+- main
+projects:
+  AdvancedBan:
+    path: ""
+...
